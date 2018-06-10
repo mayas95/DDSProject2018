@@ -26,7 +26,7 @@
 			<div class="row">
 
 				<!--  RegisterServlet  form -->
-				<c:url value="/admin/product/addProduct" var="url"></c:url>
+				<c:url value="/admin/product/addProduct1" var="url"></c:url>
 				<form:form method="post" action="${url}" commandName="productFormObj" enctype="multipart/form-data">
 					<div class="col-sm-12">
 						<div class="row">
