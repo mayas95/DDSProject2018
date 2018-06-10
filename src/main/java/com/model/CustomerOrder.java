@@ -1,14 +1,10 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "customerorder")
@@ -20,9 +16,11 @@ public class CustomerOrder implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String customerOrderId;
 
-	@OneToOne
-	@JoinColumn(name = "cartId")
-	private Cart cart;
+	@ManyToMany(mappedBy="customerOrders")
+	private List<Product> products = new ArrayList<Product>();
+
+	@Column(name = "totalPrice")
+	private Double totalPrice;
 
 	@OneToOne
 	@JoinColumn(name = "customerId")
@@ -52,13 +50,11 @@ public class CustomerOrder implements Serializable {
 		this.customerOrderId = customerOrderId;
 	}
 
-	public Cart getCart() {
-		return cart;
-	}
+	/*public Cart getCart() { return cart;}*/
 
-	public void setCart(Cart cart) {
+	/*public void setCart(Cart cart) {
 		this.cart = cart;
-	}
+	}*/
 
 	public Customer getCustomer() {
 		return customer;
@@ -75,5 +71,17 @@ public class CustomerOrder implements Serializable {
 	public void setShippingAddress(ShippingAddress shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
+	public List<Product> getProduct() {
+		return products;
+	}
+	public void setProduct(List<Product> product) {
+		this.products = product;
+	}
+	public Double getTotalPrice() {
+		return totalPrice;
+	}
 
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 }

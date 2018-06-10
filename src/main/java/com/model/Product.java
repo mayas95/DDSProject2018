@@ -1,14 +1,10 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -49,6 +45,13 @@ public class Product implements Serializable {
 
 	@Transient
 	private MultipartFile productImage;
+
+
+	@ManyToMany
+	@JoinTable(name = "product_customerOrder",
+			joinColumns = { @JoinColumn(name = "fk_product") },
+			inverseJoinColumns = { @JoinColumn(name = "fk_customerOrder") })
+	private List<CustomerOrder> customerOrders = new ArrayList<CustomerOrder>();
 
 	// Getters and Setter
 
@@ -114,6 +117,15 @@ public class Product implements Serializable {
 
 	public void setProductImage(MultipartFile productImage) {
 		this.productImage = productImage;
+	}
+
+
+	public List<CustomerOrder> getCustomerOrder() {
+		return customerOrders;
+	}
+
+	public void setCustomerOrder(List<CustomerOrder> customerOrder) {
+		this.customerOrders = customerOrder;
 	}
 
 	// Constructors

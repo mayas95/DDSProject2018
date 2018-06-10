@@ -12,6 +12,8 @@ var app = angular.module("myapp", []).controller(
 			}
 
 			$scope.addToCart = function(productId) {
+				if(productId == null){console.log("No hay id")}
+				else{console.log("La id del producto es " + productId)}
 				$http.put(BASE_PATH + "/cart/add/" + productId)
 						.success(function() {
 							alert("Added Successfully");
@@ -45,8 +47,9 @@ var app = angular.module("myapp", []).controller(
 			}
 
 			$scope.calculateGrandTotal = function() {
+				console.log("Esta pasando por aqui")
 				var grandTotal = 0.0;
-				for (var i = 0; i < $scope.carts.cartItem.length; i++)
+				for (var i = 0; i <$scope.carts.cartItem.length; i++)
 					grandTotal = grandTotal + $scope.carts.cartItem[i].price;
 				return grandTotal;
 

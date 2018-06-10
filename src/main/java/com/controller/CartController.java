@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -9,10 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.model.Cart;
-import com.model.Customer;
 import com.service.CartService;
 import com.service.CustomerService;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class CartController {
@@ -38,19 +41,25 @@ public class CartController {
 	public void setCartService(CartService cartService) {
 		this.cartService = cartService;
 	}
-	
-	@RequestMapping("cart/getCartById")
-	public String getCartId(Model model){
+
+
+	//		Normal ProductList view
+	@RequestMapping("cart/getCartById") public ModelAndView getAllCartItems() {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String emailId = user.getUsername();
 		Customer customer = customerService.getCustomerByemailId(emailId);
-		model.addAttribute("cartId", customer.getCart().getCartId());
-		return "cart";
+		//List<CartItem> carts = customer.getCart().getCartItem();
+		Cart carts = customer.getCart();
+		return new ModelAndView("cart", "carts", carts);
 	}
-	
+
+
 	@RequestMapping("/cart/getCart/{cartId}")
 	public @ResponseBody Cart getCartItems(@PathVariable(value="cartId")String cartId){
 		return cartService.getCartByCartId(cartId);
 	}
-	
+
+
+
+
 }

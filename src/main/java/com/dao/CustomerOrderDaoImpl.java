@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.model.CustomerOrder;
 
+import java.util.List;
+
 @Repository
 @Transactional
 public class CustomerOrderDaoImpl implements CustomerOrderDao {
@@ -20,6 +22,13 @@ public class CustomerOrderDaoImpl implements CustomerOrderDao {
 		session.saveOrUpdate(customerOrder);
 		session.flush();
 		session.close();
+	}
+
+	public List<CustomerOrder> getAllCustomerOrders() {
+		Session session = sessionFactory.openSession();
+		List<CustomerOrder> customerOrderList = session.createQuery("from CustomerOrder").list();
+
+		return customerOrderList;
 	}
 
 }

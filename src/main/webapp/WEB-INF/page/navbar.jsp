@@ -8,13 +8,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="icon" type="image/x-icon" href="<c:url value="/resource/images/favicon1.png"/>" />
 <link rel="stylesheet"
-	href="<c:url value="/resource/bootstrap/css/bootstrap.min.css"/>">
-<script src="<c:url value="/resource/js/jquery.js"/>"></script>
-<script src="<c:url value="/resource/bootstrap/js/bootstrap.min.js"/>"></script>
+	href="<c:url value="../resource/bootstrap/css/bootstrap.min.css"/>">
+<script src="<c:url value="../resource/js/jquery.js"/>"></script>
+<script src="<c:url value="../resource/bootstrap/js/bootstrap.min.js"/>"></script>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/css/overall.css"/>">
+	href="<c:url value="../resource/css/overall.css"/>">
 
 </head>
 <body>
@@ -24,7 +23,7 @@
 
 		<div class="nav navbar">
 			<img class="navbar-brand"
-				src="<c:url value="/resource/images/shopieasy-logo.png"/>"
+				src="<c:url value="../resource/images/shopieasy-logo.png"/>"
 				href="<c:url value="/index"/>" width="200px" height="100px"
 				alt="logo-image"></img>
 		</div>
@@ -53,6 +52,11 @@
 					<li><a href=" <c:url value="/admin/product/addProduct" />">Add
 							Product</a></li>
 				</security:authorize>
+
+				<!-- 			Only admin can view this link -->
+				<security:authorize access="hasRole('ROLE_ADMIN')">
+					<li><a href=" <c:url value="/ordersManagement" />">Orders Management</a></li>
+				</security:authorize>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
@@ -63,7 +67,8 @@
 
 					<security:authorize access="hasRole('ROLE_USER')">
 						<li><a href="<c:url value="/cart/getCartById" />"><span
-								class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+								class="glyphicon glyphicon-shopping-cart"></span> Cart</a>
+                        </li>
 					</security:authorize>
 					<li><a href="<c:url value="/j_spring_security_logout" />"><span
 							class="glyphicon glyphicon-log-out"></span> Logout</a></li>
