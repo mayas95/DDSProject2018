@@ -36,7 +36,6 @@ public class CartDaoImpl implements CartDao {
 		System.out.println(cart);
 		session.close();
 		return cart;
-
 	}
 
 	public Cart validate(String cartId) throws IOException {

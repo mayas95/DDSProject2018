@@ -67,9 +67,11 @@ public class ProductController {
 	*}
 	*/
 	//		Normal ProductList view 
-	  @RequestMapping("/getAllProducts") public ModelAndView getAllProducts() {
-	  List<Product> products = productService.getAllProducts(); return new
-	  ModelAndView("productList", "products", products); }
+	  @RequestMapping("/getAllProducts")
+	  public ModelAndView getAllProducts() {
+	  	List<Product> products = productService.getAllProducts();
+	  	return new ModelAndView("productList", "products", products);
+	  }
 	 
 	
 	// this is used for getting the product by productId
@@ -77,6 +79,7 @@ public class ProductController {
 	@RequestMapping("getProductById/{productId}")
 	public ModelAndView getProductById(@PathVariable(value = "productId") String productId) {
 		Product product = productService.getProductById(productId);
+
 		return new ModelAndView("productPage", "productObj", product);
 	}
 
@@ -101,7 +104,7 @@ public class ProductController {
 		return "redirect:/getAllProducts";
 	}
 
-	@RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/product/addProduct1", method = RequestMethod.GET)
 	public String getProductForm(Model model) {
 		Product product = new Product();
 		// New Arrivals
@@ -109,7 +112,6 @@ public class ProductController {
 		product.setProductCategory("Android");
 		model.addAttribute("productFormObj", product);
 		return "addProduct";
-
 	}
 
 	@RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.POST)
