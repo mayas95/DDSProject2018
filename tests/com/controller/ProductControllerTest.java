@@ -71,7 +71,7 @@ public class ProductControllerTest {
     public void testgetProductForm() throws Exception {
 
         verifyZeroInteractions(productService);
-        mockMvc.perform(MockMvcRequestBuilders.get("/admin/product/addProduct1"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/admin/product/addProduct"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.model().attribute("productFormObj", instanceOf(Product.class)));
     }

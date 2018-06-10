@@ -19,7 +19,9 @@ $RECYCLE.BIN/
 .idea/workspace.xml
 
 
+
 # =========================
 # Operating System Files
 # =========================
 /target/
+.gitignore
