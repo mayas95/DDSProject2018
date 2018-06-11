@@ -37,6 +37,8 @@ modules
 
 ### Installation:
 
+Simple setup: https://youtu.be/6xnnpKh4YHw
+
 1. Development Platform - Eclipse / IntelliJ Idea
    * [Download Eclipse](https://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars2)
    * [Download IntelliJ Idea](https://www.jetbrains.com/idea/download/#section=windows)
