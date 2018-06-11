@@ -16,6 +16,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.awt.*;
 
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.nullValue;
+
 public class HomeControllerTest {
 
     private MockMvc mockMvc;
@@ -32,11 +35,27 @@ public class HomeControllerTest {
     @Test
     public void testLogin() throws Exception {
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/login"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/login1"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.model().attribute("logout", nullValue()))
+                .andExpect(MockMvcResultMatchers.model().attribute("error", nullValue()));
+
+    }
+
+    @Test
+    public void testLogin1() throws Exception {
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/login1").param("logout","logout"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.model().attribute("logout", instanceOf(String.class)));
+    }
+
+    @Test
+    public void testLogin2() throws Exception {
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/login1").param("error","error"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("login"));
-sqwaldnasldnsl
-
 
     }
 }

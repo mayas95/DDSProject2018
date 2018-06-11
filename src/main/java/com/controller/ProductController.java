@@ -55,18 +55,6 @@ public class ProductController {
 		return multipartResolver;
 	}
 
-	// Request Mapping
-
-	// which displays the list of products to the productList page
-
-	/* Product List using Angular
-	* @RequestMapping("/getAllProducts")
-	* public ModelAndView getAllProducts() {
-	*	List<Product> products = productService.getAllProducts();
-	*	return new ModelAndView("productListAngular", "products", products);
-	*}
-	*/
-	//		Normal ProductList view 
 	  @RequestMapping("/getAllProducts")
 	  public ModelAndView getAllProducts() {
 	  	List<Product> products = productService.getAllProducts();
@@ -115,7 +103,7 @@ public class ProductController {
 	}
 
 
-	@RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.POST)
 	public String addProduct(@Valid @ModelAttribute(value = "productFormObj") Product product, BindingResult result) {
 		// Binding Result is used if the form that has any error then it will
 		// redirect to the same page without performing any functions
