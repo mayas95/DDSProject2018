@@ -104,7 +104,7 @@ public class ProductController {
 		return "redirect:/getAllProducts";
 	}
 
-	@RequestMapping(value = "/admin/product/addProduct1", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.GET)
 	public String getProductForm(Model model) {
 		Product product = new Product();
 		// New Arrivals
@@ -113,6 +113,7 @@ public class ProductController {
 		model.addAttribute("productFormObj", product);
 		return "addProduct";
 	}
+
 
 	@RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.GET)
 	public String addProduct(@Valid @ModelAttribute(value = "productFormObj") Product product, BindingResult result) {

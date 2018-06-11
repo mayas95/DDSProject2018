@@ -18,8 +18,13 @@ $RECYCLE.BIN/
 *.lnk
 .idea/workspace.xml
 
+.idea
+
+
 
 # =========================
 # Operating System Files
 # =========================
 /target/
+.gitignore
+.idea/inspectionProfiles/
