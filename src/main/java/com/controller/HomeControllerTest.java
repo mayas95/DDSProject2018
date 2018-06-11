@@ -31,9 +31,12 @@ public class HomeControllerTest {
 
     @Test
     public void testLogin() throws Exception {
+
         mockMvc.perform(MockMvcRequestBuilders.post("/login"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("login"));
+sqwaldnasldnsl
+
 
     }
 }
