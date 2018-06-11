@@ -76,8 +76,22 @@ modules
 
 7. Run the server.
 
-I have also filmed a video on how to setup our project simply:
-https://youtu.be/6xnnpKh4YHw
+    I have also filmed a video on how to setup our project simply:
+    https://youtu.be/6xnnpKh4YHw
+    After doing the steps in the video you should populate the database:
+
+8. Populate the database
+   After installing the H2 database and running the application on Tomcat, the database should be populated.
+   First step: Create a normal user from Registration
+   Second step: In order to get the admin user, change the 38 line in the file ShoppingCart-master/src/main/java/com/dao/CustomerDaoImpl.java
+   The line should be changed from 
+   authorities.setAuthorities("ROLE_USER");
+   to
+   authorities.setAuthorities("ROLE_ADMIN");
+   After that, the application should be restarted and then it would be able to login with the Admin account.
+   After logging in with the admin account, there is an option to add the product and that is how the products are added to the database.
+   Now the application is populated with Products and you can go to the normal account and choose products from the Product list, add them to the Cart and make Checkout.
+
 
 ### ScreenShots:
 
@@ -88,15 +102,3 @@ https://youtu.be/6xnnpKh4YHw
 * Contact Us:
 
 ![Alt text](https://github.com/ikismail/ShoppingCart/blob/master/src/main/webapp/WEB-INF/resource/images/screenshots/ContactUs.png)
-
-11. Populate the database
-After installing the H2 database and running the application on Tomcat, the database should be populated.
-First step: Create a normal user from Registration
-Second step: In order to get the admin user, change the 38 line in the file ShoppingCart-master/src/main/java/com/dao/CustomerDaoImpl.java
-The line should be changed from 
-authorities.setAuthorities("ROLE_USER");
-to
-authorities.setAuthorities("ROLE_ADMIN");
-After that, the application should be restarted and then it would be able to login with the Admin account.
-After logging in with the admin account, there is an option to add the product and that is how the products are added to the database.
-Now the application is populated with Products and you can go to the normal account and choose products from the Product list, add them to the Cart and make Checkout.
