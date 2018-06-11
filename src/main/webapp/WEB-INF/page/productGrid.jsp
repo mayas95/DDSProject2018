@@ -9,9 +9,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"
-	href="<c:url value="../resource/bootstrap/css/bootstrap.min.css"/>">
-<script src="<c:url value="../resource/js/jquery.js"/>"></script>
-<script src="<c:url value="../resource/bootstrap/js/bootstrap.min.js"/>"></script>
+	href="<c:url value="/resource/bootstrap/css/bootstrap.min.css"/>">
+<script src="<c:url value="/resource/js/jquery.js"/>"></script>
+<script src="<c:url value="/resource/bootstrap/js/bootstrap.min.js"/>"></script>
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">

@@ -1,5 +1,8 @@
 package com.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,10 @@ public class CustomerOrder implements Serializable {
 
 	@ManyToMany(mappedBy="customerOrders")
 	private List<Product> products = new ArrayList<Product>();
+
+	@OneToMany(mappedBy = "customerOrder", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<CustomerOrderItem> customerOrderItem;
 
 	@Column(name = "totalPrice")
 	private Double totalPrice;
@@ -83,5 +90,13 @@ public class CustomerOrder implements Serializable {
 
 	public void setTotalPrice(Double totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+	public List<CustomerOrderItem> getCustomerOrderItem() {
+		return customerOrderItem;
+	}
+
+	public void setCustomerOrderItem(List<CustomerOrderItem> customerOrderItem) {
+		this.customerOrderItem = customerOrderItem;
 	}
 }
