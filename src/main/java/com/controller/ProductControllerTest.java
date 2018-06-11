@@ -63,7 +63,8 @@ public class ProductControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/getProductById/1"))
                 .andExpect(MockMvcResultMatchers.status().isOk()) //the status is okay
-                .andExpect(MockMvcResultMatchers.view().name("productPage")); //the name is productPage
+                .andExpect(MockMvcResultMatchers.view().name("productPage")) //the name is productPage
+                .andExpect(MockMvcResultMatchers.model().size(1));
     }
 
 
