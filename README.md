@@ -52,15 +52,10 @@ modules
 
    * [Download H2 Database](http://www.h2database.com/html/download.html)
 
-5. Configuring tomcat with Eclipse (windows) - [Click Here](https://javatutorial.net/run-tomcat-from-eclipse)
 
-6. Installation of maven in eclipse - [Click Here](https://stackoverflow.com/questions/8620127/maven-in-eclipse-step-by-step-installation)
+5. Run your H2 Database.
 
-7. Clone the repository and import it to eclipse
-
-8. Run your H2 Database.
-
-9. Configure your databse configuration in **application-context.xml**
+6. Configure your database configuration in **application-context.xml**
 
    * Database properties:
 
@@ -79,7 +74,10 @@ modules
 
             <prop key="hibernate.dialect">YOUR DB DIALECT</prop>
 
-10. Run the server.
+7. Run the server.
+
+I have also filmed a video on how to setup our project simply:
+https://youtu.be/6xnnpKh4YHw
 
 ### ScreenShots:
 
