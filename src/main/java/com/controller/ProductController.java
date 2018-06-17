@@ -103,7 +103,7 @@ public class ProductController {
 	}
 
 
-	@RequestMapping(value = "/admin/product/addProduct", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/product/addProduct1", method = RequestMethod.POST)
 	public String addProduct(@Valid @ModelAttribute(value = "productFormObj") Product product, BindingResult result) {
 		// Binding Result is used if the form that has any error then it will
 		// redirect to the same page without performing any functions
