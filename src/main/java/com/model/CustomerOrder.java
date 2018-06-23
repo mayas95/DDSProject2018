@@ -1,13 +1,15 @@
 package com.model;
 
+import com.service.OrderStateFactoryService;
+import com.service.OrderStateFactoryService.State;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "customerorder")
@@ -19,9 +21,6 @@ public class CustomerOrder implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String customerOrderId;
 
-	@ManyToMany(mappedBy="customerOrders")
-	private List<Product> products = new ArrayList<Product>();
-
 	@OneToMany(mappedBy = "customerOrder", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<CustomerOrderItem> customerOrderItem;
@@ -29,13 +28,19 @@ public class CustomerOrder implements Serializable {
 	@Column(name = "totalPrice")
 	private Double totalPrice;
 
-	@OneToOne
+
+
+	@ManyToOne
 	@JoinColumn(name = "customerId")
 	private Customer customer;
 
 	@OneToOne
 	@JoinColumn(name = "shippingAddressId")
 	private ShippingAddress shippingAddress;
+
+	@OneToOne
+	@JoinColumn(name = "stateId")
+	private OrderState orderState;
 
 	@OneToOne
 	@JoinColumn(name = "billingAddressId")
@@ -78,12 +83,7 @@ public class CustomerOrder implements Serializable {
 	public void setShippingAddress(ShippingAddress shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
-	public List<Product> getProduct() {
-		return products;
-	}
-	public void setProduct(List<Product> product) {
-		this.products = product;
-	}
+
 	public Double getTotalPrice() {
 		return totalPrice;
 	}
@@ -98,5 +98,16 @@ public class CustomerOrder implements Serializable {
 
 	public void setCustomerOrderItem(List<CustomerOrderItem> customerOrderItem) {
 		this.customerOrderItem = customerOrderItem;
+	}
+
+	public OrderState getOrderState() {
+		return orderState;
+	}
+
+	public void setOrderState(OrderState orderState) {
+		this.orderState = orderState;
+	}
+	public void setOrderState(State state) {
+		this.orderState = OrderStateFactoryService.buildState(state,this);
 	}
 }

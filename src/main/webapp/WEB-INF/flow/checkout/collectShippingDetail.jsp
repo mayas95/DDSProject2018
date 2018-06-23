@@ -28,31 +28,31 @@
 							<div><center>Shipping Address</center></div>
 							<div class="form-group">
 								<label for="address">Address</label>
-								<form:textarea type="text" 
-									class="form-control" path="cart.customer.shippingAddress.address"></form:textarea>
+								<textarea type="text"
+									class="form-control" path="cart.customer.shippingAddress.address"></textarea>
 							</div>
 							<div class="row">
 								<div class="col-sm-6 form-group">
 									<label for="city">City</label>
-									<form:input type="text" 
-										class="form-control" path="cart.customer.shippingAddress.city"></form:input>
+									<input type="text"
+										class="form-control" path="cart.customer.shippingAddress.city"></input>
 								</div>
 								<div class="col-sm-6 form-group">
 									<label for="state">State</label>
-									<form:input type="text" 
-										class="form-control" path="cart.customer.shippingAddress.state"></form:input>
+									<input type="text"
+										class="form-control" path="cart.customer.shippingAddress.state"></input>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-6 form-group">
 									<label for="country">Country</label>
-									<form:input type="text" 
-										class="form-control" path="cart.customer.shippingAddress.country"></form:input>
+									<input type="text"
+										class="form-control" path="cart.customer.shippingAddress.country"></input>
 								</div>
 								<div class="col-sm-6 form-group">
 									<label for="zipcode">Zipcode</label>
-									<form:input type="text" 
-										class="form-control" path="cart.customer.shippingAddress.zipcode"></form:input>
+									<input type="text"
+										class="form-control" path="cart.customer.shippingAddress.zipcode"></input>
 								</div>
 							</div>
 							<input type="hidden" name="_flowExecutionKey" />

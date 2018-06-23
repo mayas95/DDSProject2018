@@ -25,56 +25,55 @@
 						<div class="row">
 							<div class="col-sm-6 form-group">
 								<label for="firstName">First Name</label>
-								<form:input type="text" class="form-control"
-									path="cart.customer.firstName"></form:input>
+								<input type="text" class="form-control" path="order.customer.firstName"></input>
 							</div>
 							<div class="col-sm-6 form-group">
 								<label for="lastName">Last Name</label>
-								<form:input type="text" class="form-control"
-									path="cart.customer.lastName"></form:input>
+								<input type="text" class="form-control"
+									path="order.customer.lastName"></input>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-6 form-group">
 								<label for="users.emailId">Email Id</label>
-								<form:input type="text" class="form-control"
-									path="cart.customer.users.emailId"></form:input>
+								<input type="text" class="form-control"
+									path="order.customer.users.emailId"></input>
 							</div>
 							<div class="col-sm-6 form-group">
 								<label for="customerPhone">Phone Number</label>
-								<form:input type="text" class="form-control"
-									path="cart.customer.customerPhone"></form:input>
+								<input type="text" class="form-control"
+									path="order.customer.customerPhone"></input>
 							</div>
 						</div>
 
 						<div>Billing Address:</div>
 						<div class="form-group">
 							<label for="address">Address</label>
-							<form:textarea type="text" class="form-control"
-								path="cart.customer.billingAddress.address"></form:textarea>
+							<textarea type="text" class="form-control"
+								path="order.customer.billingAddress.address"></textarea>
 						</div>
 						<div class="row">
 							<div class="col-sm-6 form-group">
 								<label for="city">City</label>
-								<form:input type="text" class="form-control"
-									path="cart.customer.billingAddress.city"></form:input>
+								<input type="text" class="form-control"
+									path="order.customer.billingAddress.city"></input>
 							</div>
 							<div class="col-sm-6 form-group">
 								<label for="state">State</label>
-								<form:input type="text" class="form-control"
-									path="cart.customer.billingAddress.state"></form:input>
+								<input type="text" class="form-control"
+									path="order.customer.billingAddress.state"></input>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-6 form-group">
 								<label for="country">Country</label>
-								<form:input type="text" class="form-control"
-									path="cart.customer.billingAddress.country"></form:input>
+								<input type="text" class="form-control"
+									path="order.customer.billingAddress.country"></input>
 							</div>
 							<div class="col-sm-6 form-group">
 								<label for="zipcode">Zipcode</label>
-								<form:input type="text" class="form-control"
-									path="cart.customer.billingAddress.zipcode"></form:input>
+								<input type="text" class="form-control"
+									path="order.customer.billingAddress.zipcode"></input>
 							</div>
 						</div>
 						<input type="hidden" name="_flowExecutionKey" />

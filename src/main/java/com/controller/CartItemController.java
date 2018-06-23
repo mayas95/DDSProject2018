@@ -72,28 +72,7 @@ public class CartItemController {
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	public void addCartItem(@PathVariable(value = "productId") String productId) {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String emailId = user.getUsername();
-		Customer customer = customerService.getCustomerByemailId(emailId);
-		System.out.println("Customer : " + customer.getUsers().getEmailId());
-		Cart cart = customer.getCart();
-		System.out.println(cart);
-		List<CartItem> cartItems = cart.getCartItem();
-		Product product = productService.getProductById(productId);
-		for (int i = 0; i < cartItems.size(); i++) {
-			CartItem cartItem = cartItems.get(i);
-			if (product.getProductId().equals(cartItem.getProduct().getProductId())) {
-				cartItem.setQuality(cartItem.getQuality() + 1);
-				cartItem.setPrice(cartItem.getQuality() * cartItem.getProduct().getProductPrice());
-				cartItemService.addCartItem(cartItem);
-				return;
-			}
-		}
-		CartItem cartItem = new CartItem();
-		cartItem.setQuality(1);
-		cartItem.setProduct(product);
-		cartItem.setPrice(product.getProductPrice() * 1);
-		cartItem.setCart(cart);
-		cartItemService.addCartItem(cartItem);
+		cartItemService.addCartItem(productId,user);
 	}
 
 	@RequestMapping("/cart/removeCartItem/{cartItemId}")

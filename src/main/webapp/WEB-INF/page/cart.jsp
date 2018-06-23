@@ -71,7 +71,7 @@
 		</c:forEach>
 		</tbody>
 	</table>
-		Grand Total Price: {{calculateGrandTotal()}}
+		<span >Grand Total Price: {{grandTotal}} </span>
 		</div>
 
 		<c:url value="/getAllProducts" var="url"></c:url>

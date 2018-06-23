@@ -30,11 +30,11 @@
 			<div class="col-xs-6 col-sm-6 col-md-6">
 				<address>
 				<strong>Shipping Address</strong><br />
-				${order.cart.customer.shippingAddress.address} <br />
-				${order.cart.customer.shippingAddress.city},
-				${order.cart.customer.shippingAddress.state} <br />
-				${order.cart.customer.shippingAddress.country},
-				${order.cart.customer.shippingAddress.zipcode}
+				${order.customer.shippingAddress.address} <br />
+				${order.customer.shippingAddress.city},
+				${order.customer.shippingAddress.state} <br />
+				${order.customer.shippingAddress.country},
+				${order.customer.shippingAddress.zipcode}
 				</address>
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6 text-right">
@@ -45,11 +45,11 @@
 			<div class="col-xs-6 col-sm-6 col-md-6">
 				<address>
 				<strong>Billing Address</strong><br />
-				${order.cart.customer.billingAddress.address} <br />
-				${order.cart.customer.billingAddress.city},
-				${order.cart.customer.billingAddress.state} <br />
-				${order.cart.customer.billingAddress.country},
-				${order.cart.customer.billingAddress.zipcode}
+				${order.customer.billingAddress.address} <br />
+				${order.customer.billingAddress.city},
+				${order.customer.billingAddress.state} <br />
+				${order.customer.billingAddress.country},
+				${order.customer.billingAddress.zipcode}
 				</address>
 			</div>
 		</div>
@@ -65,19 +65,19 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="cartItem" items="${order.cart.cartItem}">
+				<c:forEach var="customerOrderItem" items="${order.customerOrderItem}">
 					<tr>
-					<td style="text-align: center"><em>${cartItem.product.productName}</em></td>
-					<td style="text-align: center">${cartItem.quality}</td>
-					<td style="text-align: center">${cartItem.product.productPrice}</td>
-					<td style="text-align: center">${cartItem.price}</td>
+					<td style="text-align: center"><em>${customerOrderItem.product.productName}</em></td>
+					<td style="text-align: center">${customerOrderItem.quality}</td>
+					<td style="text-align: center">${customerOrderItem.product.productPrice}</td>
+					<td style="text-align: center">${customerOrderItem.price}</td>
 					</tr>
 				</c:forEach>
 				</tbody>
 			</table>
 			</div>
 					<div>
-					<h4><strong>Grand Total: </strong> <strong class="text-danger">$ ${order.cart.totalPrice}</strong></h4>
+					<h4><strong>Grand Total: </strong> <strong class="text-danger">$ ${order.totalPrice}</strong></h4>
 					</div>
 					
 		</div>

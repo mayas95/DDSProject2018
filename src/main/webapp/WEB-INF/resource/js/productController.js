@@ -20,13 +20,19 @@ var app = angular.module("myapp", []).controller(
 						})
 			}
 
+
 			$scope.refreshCart = function() {
 				$http.get(BASE_PATH + "/cart/getCart/"
 								+ $scope.cartId).success(function(data) {
-
 					$scope.carts = data;
-				})
+                    console.log("Esta pasando por aqui")
+                    var grandTotal = 0.0;
+                    for (var i = 0; i <$scope.carts.cartItem.length; i++)
+                        grandTotal = grandTotal + $scope.carts.cartItem[i].price;
+                    $scope.grandTotal=grandTotal;
+                })
 			}
+			$scope.refreshCart()
 
 			$scope.getCart = function(cartId) {
 				$scope.cartId = cartId;
@@ -46,12 +52,5 @@ var app = angular.module("myapp", []).controller(
 				});
 			}
 
-			$scope.calculateGrandTotal = function() {
-				console.log("Esta pasando por aqui")
-				var grandTotal = 0.0;
-				for (var i = 0; i <$scope.carts.cartItem.length; i++)
-					grandTotal = grandTotal + $scope.carts.cartItem[i].price;
-				return grandTotal;
-
-			}
+			$scope.grandTotal = 0.0;
 		});

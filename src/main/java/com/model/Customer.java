@@ -2,17 +2,12 @@ package com.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import java.util.List;
 
 @Entity
 @Table(name = "customer")
@@ -43,6 +38,11 @@ public class Customer implements Serializable {
 	@JoinColumn(name = "cartId")
 	@JsonIgnore
 	private Cart cart;
+
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<CustomerOrder> customerOrder;
+
 
 	public BillingAddress getBillingAddress() {
 		return billingAddress;
@@ -108,4 +108,11 @@ public class Customer implements Serializable {
 		this.users = users;
 	}
 
+	public List<CustomerOrder> getCustomerOrder() {
+		return customerOrder;
+	}
+
+	public void setCustomerOrder(List<CustomerOrder> customerOrder) {
+		this.customerOrder = customerOrder;
+	}
 }

@@ -5,11 +5,10 @@
       http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
     <var name="order" class="com.model.CustomerOrder" />
-    
-    <action-state id="addCartToOrder">
-        <evaluate expression="cartDaoImpl.validate(requestParameters.cartId)" result="order" />
-        <transition to="invalidCartWarning" on-exception="java.io.IOException" />
-        <transition to="collectCustomerInfo" />
+
+    <action-state id="addOrder">
+        <evaluate expression="customerOrderDaoImpl.validate(requestParameters.customerOrderId)" result="order"></evaluate>
+        <transition to="collectCustomerInfo"></transition>
     </action-state>
  
     <view-state id="collectCustomerInfo" view="collectCustomerInfo.jsp" model="order">
@@ -27,7 +26,7 @@
      </view-state> 
 
     <action-state id="processOrder">
-        <evaluate expression="cartItemDaoImpl.removeAllCartItems(order.cart)" />
+        <evaluate expression="cartItemDaoImpl.removeAllCartItems(order.customer.cart)" />
         <transition to="thankCustomer" />
     </action-state>
 
